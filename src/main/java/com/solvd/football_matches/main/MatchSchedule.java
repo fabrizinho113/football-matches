@@ -9,7 +9,9 @@ import com.solvd.football_matches.teams.Team;
 public class MatchSchedule {
 
     Match[] games = new Match[1];
-    Team[] teams = new Team[2];
+    Team[] teams = new Team[3];
+
+    //La Liga
 
     //Barcelona
     Goalkeeper t1g = new Goalkeeper("Marc Andre", "ter Stegen", "GK", 30, 17, 17);
@@ -24,23 +26,38 @@ public class MatchSchedule {
     Forward t1f1 = new Forward("Anssumane", "Fati", "ST", 20, 18, 17);
     Forward t1f2 = new Forward("Robert", "Lewandowski", "ST", 34, 19, 17);
 
-    //Barcelona
-    Goalkeeper t2g = new Goalkeeper("Marc Andre", "ter Stegen", "GK", 30, 17, 17);
-    Defender t2d1 = new Defender("Ronald Federico", "Araujo da Silva", "CB", 23, 15, 17, 17);
-    Defender t2d2 = new Defender("Hector", "Bellerin", "CB", 27, 19, 17, 18);
-    Defender t2d3 = new Defender("Andreas", "Christensen", "RB", 26, 13, 16, 17);
-    Defender t2d4 = new Defender("Jordi", "Alba", "LB", 33, 15, 17, 16);
-    Midfielder t2m1 = new Midfielder("Sergio", "Busquets", "CDM", 34, 16, 15);
-    Midfielder t2m2 = new Midfielder("Frenkie", "de Jong", "CM", 25, 17, 15);
-    Midfielder t2m3 = new Midfielder("Pedro", "Gonzalez Lopez", "CM", 20, 18, 19);
-    Midfielder t2m4 = new Midfielder("Pablo", "Paez Gavira", "CM", 18, 16, 18);
-    Forward t2f1 = new Forward("Anssumane", "Fati", "ST", 20, 18, 17);
-    Forward t2f2 = new Forward("Robert", "Lewandowski", "ST", 34, 19, 17);
+    //Real Madrid
+    Goalkeeper t2g = new Goalkeeper("Thibaut", "Courtois", "GK", 30, 17, 18);
+    Defender t2d1 = new Defender("Daniel", "Carvajal", "CB", 30, 15, 17, 17);
+    Defender t2d2 = new Defender("David", "Alaba", "CB", 30, 19, 17, 18);
+    Defender t2d3 = new Defender("Antonio", "Rüdiger", "RB", 29, 13, 16, 17);
+    Defender t2d4 = new Defender("Ferland", "Mendy", "LB", 27, 15, 17, 16);
+    Midfielder t2m1 = new Midfielder("Toni", "Kroos", "CM", 32, 16, 15);
+    Midfielder t2m2 = new Midfielder("Luka", "Modrić", "CM", 37, 17, 15);
+    Midfielder t2m3 = new Midfielder("Federico", "Valverde", "CM", 24, 18, 19);
+    Midfielder t2m4 = new Midfielder("Daniel", "Ceballos", "CM", 26, 16, 18);
+    Forward t2f1 = new Forward("Vinicius", "Junior", "ST", 22, 18, 17);
+    Forward t2f2 = new Forward("Karim", "Benzema", "ST", 35, 19, 17);
+
+    //Atletico de Madrid
+
+    Goalkeeper t3g = new Goalkeeper("Thibaut", "Courtois", "GK", 30, 17, 18);
+    Defender t3d1 = new Defender("Daniel", "Carvajal", "CB", 30, 15, 17, 17);
+    Defender t3d2 = new Defender("David", "Alaba", "CB", 30, 19, 17, 18);
+    Defender t3d3 = new Defender("Antonio", "Rüdiger", "RB", 29, 13, 16, 17);
+    Defender t3d4 = new Defender("Ferland", "Mendy", "LB", 27, 15, 17, 16);
+    Midfielder t3m1 = new Midfielder("Toni", "Kroos", "CM", 32, 16, 15);
+    Midfielder t3m2 = new Midfielder("Luka", "Modrić", "CM", 37, 17, 15);
+    Midfielder t3m3 = new Midfielder("Federico", "Valverde", "CM", 24, 18, 19);
+    Midfielder t3m4 = new Midfielder("Daniel", "Ceballos", "CM", 26, 16, 18);
+    Forward t3f1 = new Forward("Vinicius", "Junior", "ST", 22, 18, 17);
+    Forward t3f2 = new Forward("Karim", "Benzema", "ST", 35, 19, 17);
 
 
     public void setTeams() {
         teams[0] = new Team("Barcelona FC", 7);
-        teams[1] = new Team("Barcelona FC", 7);
+        teams[1] = new Team("Real Madrid FC", 3);
+        teams[2] = new Team("Atletico de Madrid FC", 5);
     }
 
     public String getTeams(int i){
@@ -55,6 +72,7 @@ public class MatchSchedule {
         for(int i=0; i<1; i++){
             games[i].score();
         }
+
     }
 
     public int homeScore(int i){

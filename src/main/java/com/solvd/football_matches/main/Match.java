@@ -52,8 +52,8 @@ public class Match {
 
     public void score(){
 
-        //Amount of iterations that will happen (10 for testing)
-        for (int i=0; i<10; i++){
+        //Amount of iterations that will happen
+        for (int i=0; i<25; i++){
 
             //To see which team gets the "ball" (output will be either 0 or 1)
             int bPossession = 0 + (int)(Math.random()*((1-0)+1));
@@ -98,6 +98,7 @@ public class Match {
                                                 if(f4.getFinishing() > g1.getReflexes() || f3.getFinishing() > g1.getReflexes()){
                                                     //Logger here saying which team did score
                                                     team2goal = team2goal +1;
+                                                    LOGGER.info("Goal!");
                                                 }
                                                 else{
 
@@ -109,12 +110,14 @@ public class Match {
                                                         if(d7.getHeading() > g1.getReflexes() || d6.getHeading() > g1.getReflexes()){
 
                                                             team2goal = team2goal+1;
+                                                            LOGGER.info("Goal!");
                                                         }
                                                         else if (longshots == 1){
 
                                                             if(m7.getLongShots() > g1.getReflexes() || m6.getLongShots() > g1.getReflexes()){
 
                                                                 team2goal = team2goal +1;
+                                                                LOGGER.info("Goal!");
                                                             }
                                                         }
                                                         else{
@@ -168,6 +171,7 @@ public class Match {
                                                 if(f1.getFinishing() > g2.getReflexes() || f2.getFinishing() > g2.getReflexes()){
                                                     //Logger here saying which team did score
                                                     team1goal = team1goal +1;
+                                                    LOGGER.info("Goal!");
                                                 }
                                                 else{
 
@@ -179,12 +183,14 @@ public class Match {
                                                         if(d2.getHeading() > g2.getReflexes() || d3.getHeading() > g2.getReflexes()){
 
                                                             team1goal = team1goal+1;
+                                                            LOGGER.info("Goal!");
                                                         }
                                                         else if (longshots == 1){
 
                                                             if(m3.getLongShots() > g2.getReflexes() || m2.getLongShots() > g2.getReflexes()){
 
                                                                 team1goal = team1goal +1;
+                                                                LOGGER.info("Goal!");
                                                             }
                                                         }
                                                         else{
