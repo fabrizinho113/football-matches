@@ -6,10 +6,18 @@ import com.solvd.football_matches.person.Goalkeeper;
 import com.solvd.football_matches.person.Midfielder;
 import com.solvd.football_matches.teams.Team;
 
-public class MatchSchedule {
+import java.util.ArrayList;
+import java.util.LinkedList;
 
-    Match[] games = new Match[1];
-    Team[] teams = new Team[3];
+public class Games {
+
+    //Match[] games = new Match[1];
+    //Team[] teams = new Team[3];
+
+    ArrayList<Team> teamsTest = new ArrayList<>();
+    LinkedList<Match> gamesTest = new LinkedList<>();
+    private int index;
+
 
     //La Liga
 
@@ -55,31 +63,42 @@ public class MatchSchedule {
 
 
     public void setTeams() {
-        teams[0] = new Team("Barcelona FC", 7);
-        teams[1] = new Team("Real Madrid FC", 3);
-        teams[2] = new Team("Atletico de Madrid FC", 5);
+        //teams[0] = new Team("Barcelona FC", 7);
+        //teams[1] = new Team("Real Madrid FC", 3);
+        //teams[2] = new Team("Atletico de Madrid FC", 5);
     }
 
-    public String getTeams(int i){
-        return teams[i].getTeamName();
+    public void setTeamsTest(){
+        teamsTest.add(new Team("Barcelona FC", 7));
+        teamsTest.add(new Team("Real Madrid FC", 3));
     }
+
+    public String getTeamsTest(int i){
+        return teamsTest.get(i).getTeamName();
+    }
+
+
 
     public void callMatch(){
 
         //Barcelona vs Barcelona as test
-        games[0] = new Match(t1g, t1d1, t1d2, t1d3, t1d4, t1m1, t1m2, t1m3, t1m4, t1f1, t1f2, t2g, t2d1, t2d2, t2d3, t2d4, t2m1, t2m2, t2m3, t2m4, t2f1, t2f2);
+        //games[0] = new Match(t1g, t1d1, t1d2, t1d3, t1d4, t1m1, t1m2, t1m3, t1m4, t1f1, t1f2, t2g, t2d1, t2d2, t2d3, t2d4, t2m1, t2m2, t2m3, t2m4, t2f1, t2f2);
+        gamesTest.add(new Match(t1g, t1d1, t1d2, t1d3, t1d4, t1m1, t1m2, t1m3, t1m4, t1f1, t1f2, t2g, t2d1, t2d2, t2d3, t2d4, t2m1, t2m2, t2m3, t2m4, t2f1, t2f2));
 
-        for(int i=0; i<1; i++){
-            games[i].score();
+        for(int i=0; i<gamesTest.size(); i++){
+            gamesTest.get(i).score();
         }
 
     }
 
     public int homeScore(int i){
-        return games[i].getTeam1Score();
+        return gamesTest.get(i).getTeam1Score();
+        //return games[i].getTeam1Score();
     }
 
     public int awayScore(int i){
-        return games[i].getTeam2Score();
+
+        return gamesTest.get(i).getTeam2Score();
+        //return games[i].getTeam2Score();
     }
 }

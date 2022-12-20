@@ -2,7 +2,7 @@ package com.solvd.football_matches;
 
 import com.solvd.football_matches.exceptions.InvalidLeague;
 import com.solvd.football_matches.exceptions.InvalidOption;
-import com.solvd.football_matches.main.MatchSchedule;
+import com.solvd.football_matches.main.Games;
 import com.solvd.football_matches.main.Menu;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -39,13 +39,13 @@ public class Test {
                     LOGGER.warn(e.getMessage());
                 }
 
-                MatchSchedule firstMatch = new MatchSchedule();
+                Games firstMatch = new Games();
 
-                firstMatch.setTeams();
+                firstMatch.setTeamsTest();
                 firstMatch.callMatch();
 
-                System.out.println("Results: " + firstMatch.getTeams(0) + " " + firstMatch.homeScore(0) + " " + firstMatch.getTeams(1) + " " + firstMatch.awayScore(0));
-                LOGGER.info("Results: " + firstMatch.getTeams(0) + " " + firstMatch.homeScore(0) + " " + firstMatch.getTeams(1) + " " + firstMatch.awayScore(0));
+                String result = "Results: " + firstMatch.getTeamsTest(0) + " " + firstMatch.homeScore(0) + " " + firstMatch.getTeamsTest(1) + " " + firstMatch.awayScore(0);
+                LOGGER.info(result);
 
             case 2:
                 Menu.showLeagues();

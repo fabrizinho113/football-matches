@@ -9,7 +9,7 @@ import org.apache.logging.log4j.core.Logger;
 
 public class Match {
 
-    public static final Logger LOGGER = (Logger) LogManager.getLogger(Menu.class);
+    public static final Logger LOGGER = (Logger) LogManager.getLogger(Match.class);
 
     // 1 Goalkeeper, 4 defenders, 4 midfielders and 2 strikers for each team
     public Defender d1, d2, d3, d4, d5, d6, d7, d8;
