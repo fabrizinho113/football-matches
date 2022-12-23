@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Games {
+    public boolean play = true;
 
     //Match[] games = new Match[1];
     //Team[] teams = new Team[3];

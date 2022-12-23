@@ -11,6 +11,7 @@ public class Match {
 
     public static final Logger LOGGER = (Logger) LogManager.getLogger(Match.class);
 
+
     // 1 Goalkeeper, 4 defenders, 4 midfielders and 2 strikers for each team
     public Defender d1, d2, d3, d4, d5, d6, d7, d8;
     public Midfielder m1, m2, m3, m4, m5, m6, m7, m8;

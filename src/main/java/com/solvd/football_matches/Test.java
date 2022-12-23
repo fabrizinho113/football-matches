@@ -3,6 +3,7 @@ package com.solvd.football_matches;
 import com.solvd.football_matches.buildings.Stadium;
 import com.solvd.football_matches.exceptions.InvalidLeague;
 import com.solvd.football_matches.exceptions.InvalidOption;
+import com.solvd.football_matches.interfaces.IPlay;
 import com.solvd.football_matches.main.Games;
 import com.solvd.football_matches.main.Menu;
 import org.apache.logging.log4j.LogManager;
@@ -48,7 +49,7 @@ public class Test {
         }
         */
 
-        //2nd Attemp (String works)
+        //2nd Attemp (String works only for now)
         Field[] gardenFields = myGarden.getClass().getDeclaredFields();
 
         for(Field field: gardenFields){
@@ -110,6 +111,16 @@ public class Test {
 
                 Games firstMatch = new Games();
 
+
+                IPlay lambdaIPlay = () -> {
+                    if (firstMatch.play == true) {
+                        LOGGER.info("Match Starts!");
+                    } else {
+                        LOGGER.warn("Match didn't start");
+                    }
+                };
+
+                lambdaIPlay.play();
                 firstMatch.setTeamsTest();
                 firstMatch.callMatch();
 
