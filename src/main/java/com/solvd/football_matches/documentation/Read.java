@@ -30,7 +30,7 @@ public class Read {
         text = StringUtils.replaceChars(text,'.',' ');
         text = StringUtils.replaceChars(text, '"',' ');
 
-        //Creating array to store words without spaces
+        //Creating array to store each word
         String[] words = StringUtils.split(text, " ");
 
 
