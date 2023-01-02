@@ -3,6 +3,7 @@ package com.solvd.football.person;
 import com.solvd.football.interfaces.ITrain;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Referee extends Person implements ITrain {
 
@@ -46,6 +47,9 @@ public class Referee extends Person implements ITrain {
         this.physical = physical;
     }
 
+    public static Referee selectRandomReferee(ArrayList<Referee> refereeArrayList) {
+        return refereeArrayList.get(new Random().nextInt(refereeArrayList.size()));
+    }
 
     @Override
     public void physicalEffort() {

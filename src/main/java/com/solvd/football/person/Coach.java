@@ -1,12 +1,15 @@
 package com.solvd.football.person;
 
 import com.solvd.football.interfaces.IFoul;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
 public class Coach extends Person implements IFoul {
 
-    int players;
+    private static final Logger LOGGER = LogManager.getLogger(Coach.class);
+
     int complains;
 
 
@@ -14,17 +17,19 @@ public class Coach extends Person implements IFoul {
 
     }
 
-    public Coach(String name, int age, String fitness, int players, int complains) {
+    public Coach(String name, int age, String fitness, int complains) {
         super(name, age, fitness);
-        this.players = players;
         this.complains = complains;
     }
 
     public void nameCoach() {
-        System.out.println("Write your name here: ");
+        LOGGER.info("Write your name here: ");
         Scanner input = new Scanner(System.in);
         name = "Coach " + input.nextLine();
-        System.out.println("You are " + name);
+        LOGGER.info("Write your age here: ");
+        age = input.nextInt();
+        LOGGER.info("You are " + name + " and you're " + age + " years old");
+
     }
 
     @Override

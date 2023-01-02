@@ -2,6 +2,9 @@ package com.solvd.football.match;
 
 import com.solvd.football.exception.*;
 import com.solvd.football.person.Player;
+import com.solvd.football.person.Referee;
+import com.solvd.football.team.AwayTeam;
+import com.solvd.football.team.HomeTeam;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,6 +16,7 @@ import java.util.stream.Collectors;
 public class Match {
 
     public static final Logger LOGGER = LogManager.getLogger(Match.class);
+
     public static ArrayList<Player> homePlayerArrayList = new ArrayList<>();
 
     public static ArrayList<Player> awayPlayerArrayList = new ArrayList<>();
@@ -24,50 +28,61 @@ public class Match {
 
     public void menu() throws InvalidCaptain {
 
-        System.out.println("These are the best rating players for the home team (you): ");
+        LOGGER.info("These are the best rating players for the home team (you): ");
 
         ArrayList<Player> homePlayersSorted = (ArrayList<Player>) homePlayerArrayList.stream()
                 .filter(player -> player.getSkill() == 1).sorted(Comparator.comparing(player -> player.getName()))
                 .collect(Collectors.toList());
 
-        homePlayersSorted.forEach(player -> System.out.println(player.getName()));
+        homePlayersSorted.forEach(player -> LOGGER.info(player.getName()));
 
-        System.out.println("These are the best rating players for the away team (opponent): ");
+        LOGGER.info("These are the best rating players for the away team (opponent): ");
 
         ArrayList<Player> awayPlayersSorted = (ArrayList<Player>) awayPlayerArrayList.stream()
                 .filter(player -> player.getSkill() == 1).sorted(Comparator.comparing(player -> player.getName()))
                 .collect(Collectors.toList());
 
-        awayPlayersSorted.forEach(player -> System.out.println(player.getName()));
+        awayPlayersSorted.forEach(player -> LOGGER.info(player.getName()));
 
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Select the captain for your team: ");
-        System.out.println("0-" + homePlayerArrayList.get(0).getName() + "\n" +
+        LOGGER.info("Select the captain for your team: ");
+        LOGGER.info("0-" + homePlayerArrayList.get(0).getName() + "\n" +
                 "1-" + homePlayerArrayList.get(1).getName() + "\n" +
                 "2-" + homePlayerArrayList.get(2).getName() + "\n" +
                 "3-" + homePlayerArrayList.get(3).getName() + "\n" +
                 "4-" + homePlayerArrayList.get(4).getName() + "\n" +
-                "5-" + homePlayerArrayList.get(5).getName() + "\n" +
-                "6-" + homePlayerArrayList.get(6).getName() + "\n" +
-                "7-" + homePlayerArrayList.get(7).getName() + "\n" +
-                "8-" + homePlayerArrayList.get(8).getName() + "\n" +
-                "9-" + homePlayerArrayList.get(9).getName() + "\n" +
-                "10-" + homePlayerArrayList.get(10).getName() + "\n"
+                "5-" + homePlayerArrayList.get(8).getName() + "\n" +
+                "6-" + homePlayerArrayList.get(5).getName() + "\n" +
+                "7-" + homePlayerArrayList.get(6).getName() + "\n" +
+                "8-" + homePlayerArrayList.get(7).getName() + "\n" +
+                "9-" + homePlayerArrayList.get(10).getName() + "\n" +
+                "10-" + homePlayerArrayList.get(9).getName() + "\n"
         );
 
         int chooseCaptain = input.nextInt();
 
-        if (chooseCaptain < 0 || chooseCaptain > 10) {
+
+        if (chooseCaptain < 0 || chooseCaptain > 11) {
             throw new InvalidCaptain();
-        } else {
-            int captainIndex = homePlayerArrayList.get(chooseCaptain).getSkill();
-            System.out.println(homePlayerArrayList.get(captainIndex).getName() + " is the captain of the home team.");
         }
+
+        int captainIndex = homePlayerArrayList.get(chooseCaptain).getShirtNumber();
+
+        LOGGER.info(homePlayerArrayList.get(captainIndex).getName() + " is the captain of the home team.");
+
 
     }
 
-    public void play(ArrayList<Player> homeTeam, ArrayList<Player> awayTeam) throws InvalidTeamSize, InvalidGoalkeeperValue, InvalidForwardValue {
+    public void announcement(HomeTeam homeTeam, AwayTeam awayTeam) {
+
+        LOGGER.info("Today's match will be played at " + homeTeam.getStadium().getName());
+        LOGGER.info(homeTeam.getName() + " vs " + awayTeam.getName());
+        LOGGER.info("Home team will be coached by " + homeTeam.getCoach().getName());
+        LOGGER.info("Away team will be coached by " + "Coach " + awayTeam.getCoach().getName());
+    }
+
+    public void play(ArrayList<Player> homeTeam, ArrayList<Player> awayTeam, Referee ref) throws InvalidTeamSize, InvalidGoalkeeperValue, InvalidForwardValue {
 
         if (homeTeam.size() < 8 || awayTeam.size() < 8) {
             throw new InvalidTeamSize();
@@ -93,33 +108,33 @@ public class Match {
                 .collect(Collectors.toList());
 
 
-        System.out.println("Home team: \n");
+        LOGGER.info("Home team: \n");
 
 
         if (homeGkSorted.size() != 1) {
             throw new InvalidGoalkeeperValue();
         } else {
-            System.out.println("Goalkeeper:");
-            homeGkSorted.forEach(player -> System.out.println(player.getName()));
+            LOGGER.info("Goalkeeper:");
+            homeGkSorted.forEach(player -> LOGGER.info(player.getName()));
         }
 
         if (homeDfSorted.size() < 2 || homeDfSorted.size() > 5 || homeMfSorted.size() < 2 || homeMfSorted.size() > 5) {
             throw new InvalidPlayerValue();
         } else {
-            System.out.println("---");
-            System.out.println("Defenders:");
-            homeDfSorted.forEach(player -> System.out.println(player.getName()));
-            System.out.println("---");
-            System.out.println("Midfielders:");
-            homeMfSorted.forEach(player -> System.out.println(player.getName()));
+            LOGGER.info("---");
+            LOGGER.info("Defenders:");
+            homeDfSorted.forEach(player -> LOGGER.info(player.getName()));
+            LOGGER.info("---");
+            LOGGER.info("Midfielders:");
+            homeMfSorted.forEach(player -> LOGGER.info(player.getName()));
         }
 
         if (homeFwSorted.size() > 3) {
             throw new InvalidForwardValue();
         } else {
-            System.out.println("---");
-            System.out.println("Forwards:");
-            homeFwSorted.forEach(player -> System.out.println(player.getName()));
+            LOGGER.info("---");
+            LOGGER.info("Forwards:");
+            homeFwSorted.forEach(player -> LOGGER.info(player.getName()));
         }
 
 
@@ -142,35 +157,37 @@ public class Match {
                 .filter(player -> player.getPosition() == "FW").sorted(Comparator.comparing(player -> player.getName()))
                 .collect(Collectors.toList());
 
-        System.out.println("Away team: \n");
+        LOGGER.info("Away team: \n");
 
         if (awayGkSorted.size() != 1) {
             throw new InvalidGoalkeeperValue();
         } else {
-            System.out.println("Goalkeeper:");
-            awayGkSorted.forEach(player -> System.out.println(player.getName()));
+            LOGGER.info("Goalkeeper:");
+            awayGkSorted.forEach(player -> LOGGER.info(player.getName()));
         }
 
         if (awayDfSorted.size() < 2 || awayDfSorted.size() > 5 || awayMfSorted.size() < 2 || awayMfSorted.size() > 5) {
             throw new InvalidPlayerValue();
         } else {
-            System.out.println("---");
-            System.out.println("Defenders:");
-            awayDfSorted.forEach(player -> System.out.println(player.getName()));
-            System.out.println("---");
-            System.out.println("Midfielders:");
-            awayMfSorted.forEach(player -> System.out.println(player.getName()));
+            LOGGER.info("---");
+            LOGGER.info("Defenders:");
+            awayDfSorted.forEach(player -> LOGGER.info(player.getName()));
+            LOGGER.info("---");
+            LOGGER.info("Midfielders:");
+            awayMfSorted.forEach(player -> LOGGER.info(player.getName()));
         }
 
         if (awayFwSorted.size() > 3) {
             throw new InvalidForwardValue();
         } else {
-            System.out.println("---");
-            System.out.println("Forwards:");
-            awayFwSorted.forEach(player -> System.out.println(player.getName()));
+            LOGGER.info("---");
+            LOGGER.info("Forwards:");
+            awayFwSorted.forEach(player -> LOGGER.info(player.getName()));
         }
 
+        LOGGER.info("The referee assigned for this match is: " + ref.getName());
 
+        LOGGER.info("Match will start!");
         for (int i = 0; i < 25; i++) {
 
             //To see which team gets the "ball" (output will be either 0 or 1)
@@ -224,6 +241,7 @@ public class Match {
 
                                             if (corner == 1) {
 
+                                                LOGGER.info("Referee " + ref.getName() + " calls a corner for the home team!");
                                                 if (homeDfSorted.get(0).getTechnique() > awayGkSorted.get(0).getTechnique() ||
                                                         homeDfSorted.get(1).getTechnique() > awayGkSorted.get(0).getTechnique()) {
 
@@ -283,6 +301,8 @@ public class Match {
                                             longshots = 0 + (int) (Math.random() * ((1 - 0) + 1));
 
                                             if (corner == 1) {
+
+                                                LOGGER.info("Referee " + ref.getName() + " calls a corner for the away team!");
 
                                                 if (awayDfSorted.get(0).getTechnique() > homeGkSorted.get(0).getTechnique() ||
                                                         awayDfSorted.get(1).getTechnique() > homeGkSorted.get(0).getTechnique()) {

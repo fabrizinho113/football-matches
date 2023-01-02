@@ -14,17 +14,20 @@ public class Player extends Person implements ITrain, IFoul, IShout {
 
     private int technique;
 
+    private int shirtNumber;
+
     public Player() {
 
     }
 
-    public Player(String name, int age, String fitness, int skill, int physical, int fouls, String position, int technique) {
+    public Player(String name, int age, String fitness, int skill, int physical, int fouls, String position, int technique, int shirtNumber) {
         super(name, age, fitness);
         this.skill = skill;
         this.physical = physical;
         this.fouls = fouls;
         this.position = position;
         this.technique = technique;
+        this.shirtNumber = shirtNumber;
     }
 
     public int getSkill() {
@@ -65,6 +68,14 @@ public class Player extends Person implements ITrain, IFoul, IShout {
 
     public void setTechnique(int technique) {
         this.technique = technique;
+    }
+
+    public int getShirtNumber() {
+        return shirtNumber;
+    }
+
+    public void setShirtNumber(int shirtNumber) {
+        this.shirtNumber = shirtNumber;
     }
 
     @Override
