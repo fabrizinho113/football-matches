@@ -9,9 +9,10 @@ import java.lang.reflect.*;
 public class ReflectionMain {
     private static final Logger LOGGER = LogManager.getLogger(ReflectionMain.class);
 
+    //Using Person Class for testing
+
     public static void getConstructors() {
         try {
-            Class person = Person.class;
             Constructor[] constructors = Person.class.getDeclaredConstructors();
             for (Constructor constructor : constructors) {
                 LOGGER.info("Constructor: " + constructor.getName());
@@ -24,7 +25,6 @@ public class ReflectionMain {
 
     public static void getFields() {
         try {
-            Class person = Person.class;
             Field[] fields = Person.class.getDeclaredFields();
             for (Field field : fields) {
                 LOGGER.info("Fields: " + Modifier.toString(field.getModifiers()) + " - " + field.getType().getName() + " - " + field.getName());
@@ -36,7 +36,6 @@ public class ReflectionMain {
 
     public static void getMethods() {
         try {
-            Class person = Person.class;
             Method[] methods = Person.class.getDeclaredMethods();
             for (Method method : methods) {
                 LOGGER.info("The method's name is: " + method.getName() + " and the method return type is " + method.getReturnType());
