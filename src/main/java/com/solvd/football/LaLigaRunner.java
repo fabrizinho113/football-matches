@@ -119,7 +119,7 @@ public class LaLigaRunner {
                 coach.nameCoach();
 
                 match.announcement(homeTeam, awayTeam);
-
+                homeTeam.playstyle();
                 LOGGER.info(currentSeason.toString());
                 LOGGER.info(currentWeather.toString());
                 match.play(Match.homePlayerArrayList, Match.awayPlayerArrayList, Referee.selectRandomReferee(Referee.refereeArrayList));

@@ -1,16 +1,21 @@
 package com.solvd.football.team;
 
+import com.solvd.football.LaLigaRunner;
 import com.solvd.football.building.Stadium;
 import com.solvd.football.exception.InvalidFormation;
 import com.solvd.football.exception.InvalidPlayerValue;
 import com.solvd.football.linkedlist.CustomLinkedList;
 import com.solvd.football.person.Coach;
 import com.solvd.football.person.Player;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HomeTeam extends Team {
+
+    private static final Logger LOGGER = LogManager.getLogger(HomeTeam.class);
 
     private ArrayList<Player> homePlayers;
 
@@ -48,7 +53,7 @@ public class HomeTeam extends Team {
 
         CustomLinkedList<Integer> tactics = new CustomLinkedList<>();
 
-        System.out.println("Select which type of playstyle you want to play: " +
+        LOGGER.info("Select which type of playstyle you want to play: " +
                 "1- Aggressive \n" + "2- Passive \n" + "3- Neutral");
 
         int instruction = input.nextInt();
@@ -58,7 +63,7 @@ public class HomeTeam extends Team {
         }
 
         tactics.insert(instruction);
-        System.out.println("You selected option number ");
+        LOGGER.info("You selected option number ");
         tactics.show();
     }
 }
