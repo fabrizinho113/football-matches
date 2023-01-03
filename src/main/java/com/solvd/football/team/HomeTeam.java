@@ -61,6 +61,7 @@ public class HomeTeam extends Team {
         if (instruction < 0 || instruction > 3) {
             throw new InvalidFormation();
         }
+        
 
         tactics.insert(instruction);
         LOGGER.info("You selected option number ");

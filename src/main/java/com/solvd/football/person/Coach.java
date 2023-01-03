@@ -35,15 +35,15 @@ public class Coach extends Person implements IFoul {
     @Override
     public void foul() {
         if (complains >= 4) {
-            System.out.println("The coach receives a " + YELLOW_CARD + " for protest");
+            LOGGER.warn("The coach receives a " + YELLOW_CARD + " for protest");
         } else if (complains >= 6) {
-            System.out.println("The coach receives a " + RED_CARD);
-            System.out.println("The coach has been sent off!");
+            LOGGER.warn("The coach receives a " + RED_CARD);
+            LOGGER.warn("The coach has been sent off!");
         }
     }
 
     @Override
     public void physicalEffort() {
-        System.out.println("Coaches don't need to train since they aren't playing");
+        LOGGER.error("Coaches don't need to train since they aren't playing");
     }
 }

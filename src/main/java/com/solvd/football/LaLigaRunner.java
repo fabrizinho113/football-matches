@@ -2,6 +2,8 @@ package com.solvd.football;
 
 import com.solvd.football.building.Stadium;
 import com.solvd.football.exception.*;
+import com.solvd.football.interfaces.IPlay;
+import com.solvd.football.match.DaysAvailable;
 import com.solvd.football.match.Match;
 import com.solvd.football.match.Season;
 import com.solvd.football.match.Weather;
@@ -106,12 +108,17 @@ public class LaLigaRunner {
 
         AwayTeam awayTeam = new AwayTeam("Real Madrid", "Away", ancelotti, 1, Match.awayPlayerArrayList);
 
+        IPlay lambdaIPlay = () -> {
+            LOGGER.info("The match starts!");
+        };
+
         try {
-
-
+            
             Season currentSeason = Season.FALL.randomSeason();
 
             Weather currentWeather = Weather.CLOUDY.randomWeather();
+
+            DaysAvailable days = DaysAvailable.THURSDAY.randomDay();
 
             if (currentSeason != Season.SUMMER) {
                 match.menu();
@@ -119,11 +126,21 @@ public class LaLigaRunner {
                 coach.nameCoach();
 
                 match.announcement(homeTeam, awayTeam);
+
+                LOGGER.info(currentSeason::toString);
+
+                LOGGER.info(currentWeather::toString);
+
+                LOGGER.info(days::toString);
+
                 homeTeam.playstyle();
-                LOGGER.info(currentSeason.toString());
-                LOGGER.info(currentWeather.toString());
+
+                lambdaIPlay.play();
+
                 match.play(Match.homePlayerArrayList, Match.awayPlayerArrayList, Referee.selectRandomReferee(Referee.refereeArrayList));
+
                 String result = "Results: " + homeTeam.getName() + " " + match.getTeam1Score() + " - " + awayTeam.getName() + " " + match.getTeam2Score();
+
                 LOGGER.info(result);
             } else {
                 throw new InvalidSeason();
