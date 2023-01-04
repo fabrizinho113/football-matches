@@ -51,7 +51,7 @@ public class ConnectionPool {
                     return connection;
                 }
             }
-            throw new RuntimeException("No connections available after 10 seconds");
+            throw new RuntimeException("Error. No connections available after 10 seconds");
 
         }
     }

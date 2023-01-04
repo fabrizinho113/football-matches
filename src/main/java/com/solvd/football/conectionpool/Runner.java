@@ -45,6 +45,6 @@ public class Runner {
         while (!executor1.isTerminated()) {
 
         }
-        LOGGER.info("Finished all threads");
+        LOGGER.info("Process completed. Finished all threads");
     }
 }

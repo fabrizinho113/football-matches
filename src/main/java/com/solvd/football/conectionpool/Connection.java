@@ -12,7 +12,7 @@ public class Connection {
 
     public Connection(String name) {
         this.name = name;
-        LOGGER.info("The connection " + name + "was created");
+        LOGGER.info("The connection " + name + " was created");
     }
 
     void connect() {
