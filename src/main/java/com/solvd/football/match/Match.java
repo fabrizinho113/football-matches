@@ -1,6 +1,7 @@
 package com.solvd.football.match;
 
 import com.solvd.football.exception.*;
+import com.solvd.football.interfaces.IPlay;
 import com.solvd.football.person.Player;
 import com.solvd.football.person.Referee;
 import com.solvd.football.team.AwayTeam;
@@ -187,7 +188,12 @@ public class Match {
 
         LOGGER.info("The referee assigned for this match is: " + ref.getName());
 
-        LOGGER.info("Match will start!");
+        IPlay lambdaIPlay = () -> {
+            LOGGER.info("The match starts!");
+        };
+
+        lambdaIPlay.play();
+
         for (int i = 0; i < 25; i++) {
 
             //To see which team gets the "ball" (output will be either 0 or 1)
@@ -217,7 +223,8 @@ public class Match {
                         break;
                     case 1:
                         if (homeMfSorted.get(0).getTechnique() > awayMfSorted.get(0).getTechnique() ||
-                                homeMfSorted.get(1).getTechnique() > awayMfSorted.get(1).getTechnique()) {
+                                homeMfSorted.get(1).getTechnique() > awayMfSorted.get(1).getTechnique() ||
+                                homeMfSorted.get(2).getTechnique() > awayMfSorted.get(2).getTechnique()) {
 
                             finalthird = 0 + (int) (Math.random() * ((1 - 0) + 1));
 
@@ -230,7 +237,8 @@ public class Match {
                                     if (goalSituation == 1) {
 
                                         if (homeFwSorted.get(0).getTechnique() > awayGkSorted.get(0).getTechnique() ||
-                                                homeFwSorted.get(1).getTechnique() > awayGkSorted.get(0).getTechnique()) {
+                                                homeFwSorted.get(1).getTechnique() > awayGkSorted.get(0).getTechnique() ||
+                                                homeFwSorted.get(2).getTechnique() > awayGkSorted.get(0).getTechnique()) {
                                             //Logger here saying which team did score
                                             team1goal = team1goal + 1;
                                             LOGGER.info("Goal!");
@@ -243,14 +251,16 @@ public class Match {
 
                                                 LOGGER.info("Referee " + ref.getName() + " calls a corner for the home team!");
                                                 if (homeDfSorted.get(0).getTechnique() > awayGkSorted.get(0).getTechnique() ||
-                                                        homeDfSorted.get(1).getTechnique() > awayGkSorted.get(0).getTechnique()) {
+                                                        homeDfSorted.get(1).getTechnique() > awayGkSorted.get(0).getTechnique() ||
+                                                        homeDfSorted.get(2).getTechnique() > awayGkSorted.get(0).getTechnique()) {
 
                                                     team1goal = team1goal + 1;
                                                     LOGGER.info("Goal!");
                                                 } else if (longshots == 1) {
 
                                                     if (homeMfSorted.get(0).getTechnique() > awayGkSorted.get(0).getTechnique() ||
-                                                            homeMfSorted.get(1).getTechnique() > awayGkSorted.get(0).getTechnique()) {
+                                                            homeMfSorted.get(1).getTechnique() > awayGkSorted.get(0).getTechnique() ||
+                                                            homeMfSorted.get(2).getTechnique() > awayGkSorted.get(0).getTechnique()) {
 
                                                         team1goal = team1goal + 1;
                                                         LOGGER.info("Goal!");
@@ -277,7 +287,8 @@ public class Match {
                         break;
                     case 1:
                         if (awayMfSorted.get(0).getTechnique() > homeDfSorted.get(0).getTechnique() ||
-                                awayMfSorted.get(1).getTechnique() > homeDfSorted.get(1).getTechnique()) {
+                                awayMfSorted.get(1).getTechnique() > homeDfSorted.get(1).getTechnique() ||
+                                awayMfSorted.get(2).getTechnique() > homeDfSorted.get(1).getTechnique()) {
 
                             finalthird = 0 + (int) (Math.random() * ((1 - 0) + 1));
 
@@ -290,7 +301,8 @@ public class Match {
                                     if (goalSituation == 1) {
 
                                         if (awayFwSorted.get(0).getTechnique() > homeDfSorted.get(0).getTechnique() ||
-                                                awayFwSorted.get(0).getTechnique() > homeDfSorted.get(1).getTechnique()) {
+                                                awayFwSorted.get(1).getTechnique() > homeDfSorted.get(1).getTechnique() ||
+                                                awayFwSorted.get(2).getTechnique() > homeDfSorted.get(2).getTechnique()) {
 
                                             //Logger here saying which team did score
                                             team2goal = team2goal + 1;
@@ -305,14 +317,16 @@ public class Match {
                                                 LOGGER.info("Referee " + ref.getName() + " calls a corner for the away team!");
 
                                                 if (awayDfSorted.get(0).getTechnique() > homeGkSorted.get(0).getTechnique() ||
-                                                        awayDfSorted.get(1).getTechnique() > homeGkSorted.get(0).getTechnique()) {
+                                                        awayDfSorted.get(1).getTechnique() > homeGkSorted.get(0).getTechnique() ||
+                                                        awayDfSorted.get(2).getTechnique() > homeGkSorted.get(0).getTechnique()) {
 
                                                     team2goal = team2goal + 1;
                                                     LOGGER.info("Goal!");
                                                 } else if (longshots == 1) {
 
                                                     if (awayMfSorted.get(0).getTechnique() > homeGkSorted.get(0).getTechnique() ||
-                                                            awayMfSorted.get(1).getTechnique() > homeGkSorted.get(0).getTechnique()) {
+                                                            awayMfSorted.get(1).getTechnique() > homeGkSorted.get(0).getTechnique() ||
+                                                            awayMfSorted.get(2).getTechnique() > homeGkSorted.get(0).getTechnique()) {
 
                                                         team2goal = team2goal + 1;
                                                         LOGGER.info("Goal!");

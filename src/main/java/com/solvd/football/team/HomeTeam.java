@@ -1,6 +1,5 @@
 package com.solvd.football.team;
 
-import com.solvd.football.LaLigaRunner;
 import com.solvd.football.building.Stadium;
 import com.solvd.football.exception.InvalidFormation;
 import com.solvd.football.exception.InvalidPlayerValue;
@@ -47,7 +46,7 @@ public class HomeTeam extends Team {
         this.stadium = stadium;
     }
 
-    public void playstyle() throws InvalidPlayerValue {
+    public void playstyle() throws InvalidPlayerValue, InvalidFormation {
 
         Scanner input = new Scanner(System.in);
 
@@ -61,7 +60,7 @@ public class HomeTeam extends Team {
         if (instruction < 0 || instruction > 3) {
             throw new InvalidFormation();
         }
-        
+
 
         tactics.insert(instruction);
         LOGGER.info("You selected option number ");

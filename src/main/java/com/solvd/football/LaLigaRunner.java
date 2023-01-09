@@ -2,7 +2,6 @@ package com.solvd.football;
 
 import com.solvd.football.building.Stadium;
 import com.solvd.football.exception.*;
-import com.solvd.football.interfaces.IPlay;
 import com.solvd.football.match.DaysAvailable;
 import com.solvd.football.match.Match;
 import com.solvd.football.match.Season;
@@ -108,12 +107,8 @@ public class LaLigaRunner {
 
         AwayTeam awayTeam = new AwayTeam("Real Madrid", "Away", ancelotti, 1, Match.awayPlayerArrayList);
 
-        IPlay lambdaIPlay = () -> {
-            LOGGER.info("The match starts!");
-        };
-
         try {
-            
+
             Season currentSeason = Season.FALL.randomSeason();
 
             Weather currentWeather = Weather.CLOUDY.randomWeather();
@@ -135,20 +130,17 @@ public class LaLigaRunner {
 
                 homeTeam.playstyle();
 
-                lambdaIPlay.play();
 
                 match.play(Match.homePlayerArrayList, Match.awayPlayerArrayList, Referee.selectRandomReferee(Referee.refereeArrayList));
 
                 String result = "Results: " + homeTeam.getName() + " " + match.getTeam1Score() + " - " + awayTeam.getName() + " " + match.getTeam2Score();
 
                 LOGGER.info(result);
-            } else {
-                throw new InvalidSeason();
             }
 
 
         } catch (InvalidCaptain | InvalidTeamSize | InvalidGoalkeeperValue | InvalidForwardValue | InvalidSeason e) {
-            LOGGER.warn(e.getMessage());
+            LOGGER.error(e.getMessage());
         }
 
 
